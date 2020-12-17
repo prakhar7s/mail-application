@@ -1,0 +1,39 @@
+.about-mail {
+  border: 1px solid black;
+  flex: 0.5;
+  display: flex;
+  flex-direction: column;
+
+  .about-mail-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    min-height: 20%;
+    border-bottom: 1px solid black;
+    .mail-subject {
+      padding: 5px 10px;
+    }
+
+    .mail-sent-details {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 10px;
+
+      .sent-by {
+      }
+
+      .sent-at {
+      }
+    }
+  }
+
+  .mail-body {
+    padding: 10px;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 100%;
+
+    body {
+    }
+  }
+}

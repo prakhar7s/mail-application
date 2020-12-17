@@ -1,0 +1,33 @@
+.mail-item {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  padding: 5px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+
+  .mail-subject {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+
+  .mail-item-bottom {
+    display: flex;
+    align-items: center;
+
+    .mail-sent-by {
+      width: 60%;
+      white-space: pre-wrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      margin-right: 10%;
+    }
+
+    .mail-sent-time {
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 15px;
+      width: 30%;
+    }
+  }
+}

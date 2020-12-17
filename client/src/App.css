@@ -1,0 +1,22 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app {
+  display: flex;
+  width: 96vw;
+  height: 92vh;
+  margin: auto;
+  border: 1px solid black;
+}
