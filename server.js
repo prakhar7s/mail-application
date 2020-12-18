@@ -1,45 +1,89 @@
 const express = require("express");
-const uuid = require("uuid");
+const generateID = require("./generate-id");
 const passEncrypter = require("./password_encrypter/password-encrypter");
+const cors = require("cors");
 const db = require("knex")({
   client: "pg",
   connection: {
     host: "localhost",
-    user: "postgres",
-    password: "postgres",
-    database: "postgres",
+    user: "prakhar",
+    password: "1234",
+    database: "gigamail",
   },
 });
-
-function insertMail(subject, sentby, sentat, body) {
-  const mailid = uuid.v4();
-  db("inbox_mails")
-    .insert([{ mailid, subject, sentby, sentat, body }])
-    .then(({ command, rowCount }) => console.log(`${rowCount} --> ${command}`))
-    .catch((err) => console.log(err));
-}
-
-function allMails() {
-  db.select()
-    .table("inbox_mails")
-    .then((rows) => console.log(rows));
-}
-
-const delAllMAils = () => {
-  db("inbox_mails")
-    .del()
-    .then((res) => console.log(res));
-};
-// insertMail("dsads", "sdada", "2000-12-12 23:56:33", "sdasdadasdasda");
-// allMails();
-// delAllMAils();
 
 const app = express();
 
 const PORT = process.env.PORT || 5000;
 
-app.post("/signin", (req, res) => {
-  console.log(req, "ssd");
+app.use(cors());
+app.use(express.json());
+
+app.post("/signin", (req, response) => {
+  const { gigamail, password } = req.body;
+
+  db("users")
+    .where({ gigamail })
+    .then((res) => {
+      if (res.length >= 1) {
+        const encrypted = res[0].password;
+        passEncrypter.compare(password, encrypted).then((result) => {
+          if (result) {
+            const user = {
+              name: res[0].name,
+              userid: res[0].userid,
+              gigamail: res[0].gigamail,
+            };
+            response.json({ isMatched: true, user });
+          } else {
+            response.json({ isMatched: false });
+          }
+        });
+      } else {
+        response.json({ isMatched: false });
+      }
+    })
+    .catch((err) => console.log(err));
 });
+
+// SignUp
+app.post("/signup", (req, response) => {
+  const { name, gigamail, password } = req.body;
+
+  db("users")
+    .where({ gigamail })
+    .then((res) => {
+      if (res.length) {
+        response.json({ msg: "gigamail already resgistered" });
+      } else {
+        const userid = generateID();
+        const hashed = passEncrypter.encrypt(password);
+
+        db("users")
+          .insert({
+            name,
+            userid,
+            gigamail,
+            password: hashed,
+          })
+          .then((res) => {
+            response.json({ msg: "User registered successfully." });
+          })
+          .catch((err) => {
+            response.json({ msg: err.msg });
+          });
+      }
+    });
+});
+
+// db("users")
+//   .where({ gigamail: "prakhar@gigamail.com" })
+//   .then((res) => {
+//     console.log(res);
+
+//     passEncrypter
+//       .compare("prakharbhai@123", "@dWdvbs4N!b>")
+//       .then((res) => console.log(res));
+//   });
 
 app.listen(PORT, () => console.log(`Server is running at ${PORT}`));

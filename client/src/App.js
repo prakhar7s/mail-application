@@ -9,30 +9,49 @@ import MailCollections from "./components/mail-collections/mail-collections.comp
 import AboutMail from "./components/about-mail/about-mail.component";
 
 import SignIn from "./pages/signin-page/signin-page.component";
+import SignUp from "./pages/sign-up/signup-page.component";
+
+import { connect } from "react-redux";
 
 class App extends React.Component {
-  constructor() {
-    super();
+  // constructor(props) {
+  //   super(props);
+  //   // console.log(props);
+  //   this.state = {
+  //     // user: props.user,
+  //   };
+  // }
 
-    this.state = {
-      user: "",
-    };
+  componentDidMount() {
+    // console.log(this.props.user);
+    // this.setState({ user: this.props.user });
+    // console.log(this.props);
+    // console.log("sds");
   }
+
   render() {
     return (
       <div className="app">
-        {this.state.user ? (
+        {this.props.user ? (
           <>
             <Sidebar />
             <MailCollections />
             <Route exact path="/inbox/about/:id" component={AboutMail} />
           </>
         ) : (
-          <Route exact path="/signin" component={SignIn} />
+          <>
+            {/* <Route exact path="/signin" component={SignIn} /> */}
+            <SignIn />
+            <SignUp />
+          </>
         )}
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  user: state.user.user,
+});
+
+export default connect(mapStateToProps)(App);

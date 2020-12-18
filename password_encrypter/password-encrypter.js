@@ -2,13 +2,13 @@ const db = require("knex")({
   client: "pg",
   connection: {
     host: "localhost",
-    user: "postgres",
-    password: "postgres",
-    database: "postgres",
+    user: "prakhar",
+    password: "1234",
+    database: "gigamail",
   },
 });
 
-function hashedPassword(length = 24) {
+function hashedPassword(length = 12) {
   const chars =
     "AiBk9C5<{%tvExF3oGHI8#d4%4gq%b$3MNy^OuP4Q@6}(cch35536$34~U32!7s)d#1d24$#z3$8W>@^@X$##YZ";
   var rand = 0;
@@ -20,40 +20,32 @@ function hashedPassword(length = 24) {
   return hashed;
 }
 
-function getHelp() {
-  return "functions: encrypted/false encrypt(normal), bool compare(encrypted)";
-}
-
 function encrypt(normal) {
-  const encrypted = hashedPassword();
-  if (normal && encrypted) {
-    return db("password_encrypter")
-      .insert({ normal, encrypted })
-      .then((res) => {
-        return encrypted;
-      })
+  const hashed = hashedPassword();
+  if (normal && hashed) {
+    db("hashed_passwords")
+      .insert({ normal, hashed })
+      .then((res) => {})
       .catch((err) => {
         return false;
       });
   }
+  return hashed;
 }
 
-async function compare(normal, encrypted) {
-  return await db("password_encrypter")
-    .where({ normal, encrypted })
-    .then((res) => (res.length ? true : false));
-}
-
-async function getAll() {
-  return await db
-    .select()
-    .table("password_encrypter")
-    .then((rows) => rows);
+async function compare(normal, hashed) {
+  return await db("hashed_passwords")
+    .where({ normal, hashed })
+    .then((rows) => {
+      if (rows.length) {
+        return true;
+      } else {
+        return false;
+      }
+    });
 }
 
 module.exports = {
-  getHelp,
   encrypt,
   compare,
-  getAll,
 };
