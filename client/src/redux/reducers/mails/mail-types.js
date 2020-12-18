@@ -1,0 +1,8 @@
+const mailActionTypes = {
+  SET_INBOX_MAILS: "SET_INBOX_MAILS",
+  SET_SENT_MAILS: "SET_SENT_MAILS",
+  SET_DRAFT_MAILS: "SET_DRAFT_MAILS",
+  SET_TRASHED_MAILS: "SET_TRASHED_MAILS",
+};
+
+export default mailActionTypes;

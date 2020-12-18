@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 
-import inboxReducer from "./reducers/inbox/inbox-reducer";
+import MailReducer from "./reducers/mails/mail-reducer";
 
 import userReducer from "./reducers/user/user-reducer";
 
 const rootReducer = combineReducers({
-  inbox: inboxReducer,
+  mails: MailReducer,
   user: userReducer,
 });
 

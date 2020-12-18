@@ -6,3 +6,7 @@ export const userSignIn = (user) => {
     payload: user,
   };
 };
+
+export const userSignOut = () => ({
+  type: userActionTypes.SIGN_OUT,
+});
