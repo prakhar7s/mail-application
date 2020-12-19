@@ -8,20 +8,20 @@ import { userSignOut } from "../../redux/reducers/user/user-actions";
 
 import "./sidebar.styles.scss";
 
-const Sidebar = ({ user, userSignOut }) => {
+const Sidebar = ({ user, userSignOut, inboxMailsCount, sentMailsCount }) => {
   return (
     <div className="sidebar">
       <div className="application-name">
-        <span>App Name</span>
+        <span>gigaMail</span>
       </div>
       <div className="sidebar-options">
         <div className="option">
-          <Link to={`/${user.userid}/inbox`}>Inbox</Link>
-          <span className="no-of-mails">0</span>
+          <Link to={`/user/${user.userid}/inbox`}>Inbox</Link>
+          <span className="no-of-mails">{inboxMailsCount}</span>
         </div>
         <div className="option">
-          <Link to={`/${user.userid}/sent`}>Sent</Link>
-          <span className="no-of-mails">0</span>
+          <Link to={`/user/${user.userid}/sent`}>Sent</Link>
+          <span className="no-of-mails">{sentMailsCount}</span>
         </div>
         <div className="option">
           <Link to="/drafts">Drafts</Link>
@@ -37,7 +37,6 @@ const Sidebar = ({ user, userSignOut }) => {
         <button
           onClick={() => {
             sessionStorage.removeItem("user");
-
             userSignOut();
           }}
         >
@@ -50,6 +49,8 @@ const Sidebar = ({ user, userSignOut }) => {
 
 const mapStateToProps = (state) => ({
   user: state.user.user,
+  inboxMailsCount: state.mails.inboxMails.length,
+  sentMailsCount: state.mails.sentMails.length,
 });
 
 const mapDisptachToProps = (dispatch) => ({

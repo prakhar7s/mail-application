@@ -41,7 +41,6 @@ class SignIn extends React.Component {
         if (res.isMatched) {
           sessionStorage.setItem("user", JSON.stringify(res.user));
           this.props.userSignIn(res.user);
-          this.props.history.push(`/${res.user.userid}`);
         } else {
           this.setState({ error: "Something not matched" });
         }

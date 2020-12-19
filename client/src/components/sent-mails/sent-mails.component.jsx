@@ -2,27 +2,11 @@ import React, { useEffect } from "react";
 
 import { connect } from "react-redux";
 
-import { setSentMails } from "../../redux/reducers/mails/mail-actions";
 import MailItem from "../mail-item/mail-item.component";
 
 import "./sent-mails.styles.scss";
 
-const SentMails = ({ sentMails, user, setSentMails }) => {
-  useEffect(() => {
-    fetch("http://localhost:5000/sent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        gigamail: user.gigamail,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.isMails) {
-          setSentMails(res.sentMails);
-        }
-      });
-  }, [setSentMails, user.gigamail]);
+const SentMails = ({ sentMails }) => {
   return (
     <div className="sent-mails">
       {sentMails.map((sentMail) => (
@@ -42,8 +26,4 @@ const mapStateToProps = (state) => ({
   user: state.user.user,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setSentMails: (sentMails) => dispatch(setSentMails(sentMails)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SentMails);
+export default connect(mapStateToProps)(SentMails);

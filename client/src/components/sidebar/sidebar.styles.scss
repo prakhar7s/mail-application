@@ -1,22 +1,22 @@
 .sidebar {
   border: 1px solid black;
-  flex: 0.2;
+  width: 20%;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(to top, rgb(2, 11, 46), #0a0909);
+  color: white;
 
   .application-name {
-    flex: 0.15;
-    background-color: rgb(56, 9, 226);
+    flex: 0.2;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-bottom: 1px solid rgba(235, 235, 235, 0.178);
   }
 
   .sidebar-options {
     flex: 0.5;
-    background-color: rgb(21, 4, 51);
-    color: white;
-    padding-top: 70px;
+    border-bottom: 1px solid rgba(235, 235, 235, 0.178);
 
     .option {
       margin: 20px 10px;
@@ -32,8 +32,13 @@
   }
 
   .user-informations {
-    background-color: rgb(228, 118, 28);
-    flex: 1;
+    flex: 0.2;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    margin-top: 30px;
 
     h1 {
       color: white;

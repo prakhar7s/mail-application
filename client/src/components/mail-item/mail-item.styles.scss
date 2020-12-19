@@ -1,19 +1,42 @@
+$border-color: rgb(175, 174, 174);
+
 .mail-item {
   display: flex;
   flex-direction: column;
   margin: 10px 0;
-  padding: 5px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid black;
+  padding: 10px;
+  border-bottom: 1px solid $border-color;
+  border-top: 1px solid $border-color;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  transition: 200ms all linear;
+
+  &:hover {
+    background-color: rgba(6, 6, 56, 0.281);
+  }
 
   .mail-subject {
     font-size: 10px;
     margin-bottom: 10px;
+
+    .subject {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 20px;
+      font-family: "Lato", sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+    }
   }
 
   .mail-item-bottom {
     display: flex;
     align-items: center;
+    font-family: "Lato", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: rgb(52, 112, 197);
 
     .mail-sent-by {
       width: 60%;

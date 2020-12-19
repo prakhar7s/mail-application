@@ -2,6 +2,8 @@ import React from "react";
 
 import { connect } from "react-redux";
 
+import { formatTimeLong } from "../../utility/formatTime";
+
 import "./about-mail.styles.scss";
 
 const AboutMail = ({ mail }) => {
@@ -13,7 +15,7 @@ const AboutMail = ({ mail }) => {
             <div className="mail-subject">{mail.sub}</div>
             <div className="mail-sent-details">
               <span className="sent-by">{mail.sender || mail.receiver}</span>
-              <span className="sent-at">{mail.at}</span>
+              <span className="sent-at">{formatTimeLong(mail.at)}</span>
             </div>
           </div>
           <div className="mail-body">

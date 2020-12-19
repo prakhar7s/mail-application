@@ -11,12 +11,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #eee;
 }
 
 .app {
   display: flex;
-  width: 96vw;
-  height: 92vh;
+  width: 94vw;
+  height: 90vh;
   margin: auto;
-  border: 1px solid black;
+  font-family: "Lato", sans-serif;
+  background-color: white;
+  box-shadow: 0 4px 20px rgba(51, 51, 51, 0.2);
 }
