@@ -30,17 +30,17 @@
       .sent-at {
         position: relative;
 
-        &::before {
-          content: ".";
-          position: absolute;
-          top: -55%;
-          left: 62%;
-          height: 30px;
-          width: 10px;
-          background-color: inherit;
-          font-size: 25px;
-          text-align: center;
-        }
+        // &::before {
+        //   content: ".";
+        //   position: absolute;
+        //   top: -55%;
+        //   left: 62%;
+        //   height: 30px;
+        //   width: 10px;
+        //   background-color: inherit;
+        //   font-size: 25px;
+        //   text-align: center;
+        // }
       }
     }
   }
@@ -50,6 +50,9 @@
     overflow: scroll;
     overflow-x: hidden;
     height: 100%;
+    font-weight: 500;
+    font-size: 18px;
+    background-color: rgba(29, 29, 160, 0.055);
 
     &::-webkit-scrollbar {
       background-color: rgba(33, 6, 134, 0.555);

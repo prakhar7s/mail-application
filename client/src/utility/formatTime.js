@@ -44,7 +44,7 @@ export function formatTimeLong(time) {
   const year = convertedToDate.toLocaleDateString().split("/")[2];
   const convertedTime = convertedToDate.toLocaleTimeString();
 
-  return `${months[month]} ${date}, ${year} ... ${convertedTime.substring(
+  return `${months[month]} ${date}, ${year} at ${convertedTime.substring(
     0,
     5
   )}`;
