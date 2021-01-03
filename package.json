@@ -12,6 +12,8 @@
   "author": "Prakhar Shrivastava",
   "license": "MIT",
   "dependencies": {
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
     "concurrently": "^5.3.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",

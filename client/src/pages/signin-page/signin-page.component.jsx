@@ -2,7 +2,10 @@ import React from "react";
 
 import { connect } from "react-redux";
 
+import "./signin-page.styles.scss";
+
 import { userSignIn } from "../../redux/reducers/user/user-actions";
+import { Link } from "react-router-dom";
 
 class SignIn extends React.Component {
   constructor() {
@@ -54,17 +57,22 @@ class SignIn extends React.Component {
           <input
             type="text"
             name="gigamail"
+            placeholder="prakhar@gigamail.com"
             onChange={(e) => this.handleChange(e)}
           />
           <input
             type="text"
             name="password"
+            placeholder="prakhar@123"
             onChange={(e) => this.handleChange(e)}
           />
           <input type="submit" onClick={(e) => this.handleSubmit(e)} />
         </form>
         {this.state.error}
         <h1>{this.props.user ? this.props.user.name : "sdsd"} </h1>
+        <p>
+          Don't have an account <Link to="/signup">Sign up</Link>
+        </p>
       </div>
     );
   }

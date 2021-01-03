@@ -85,7 +85,7 @@ app.post("/inbox", (req, response) => {
       .from("mails")
       .innerJoin("mail_details", "mails.mailid", "mail_details.mailid")
       .then((res) => {
-        if (res.length) {
+        if (res.length !== 0) {
           response.json({ inboxMails: res, isMails: true });
         } else {
           response.json({ isMails: false });
@@ -103,13 +103,55 @@ app.post("/sent", (req, response) => {
       .from("mails")
       .innerJoin("mail_details", "mails.mailid", "mail_details.mailid")
       .then((res) => {
-        if (res.length) {
+        if (res.length !== 0) {
           response.json({ sentMails: res, isMails: true });
         } else {
           response.json({ isMails: false });
         }
       });
   }
+});
+
+app.post("/create-mail", async (req, resp) => {
+  const { user, to, subject, body } = req.body;
+
+  const mailid = generateID(5);
+
+  console.log(mailid);
+
+  await db
+    .column("name")
+    .where({ gigamail: to })
+    .from("users")
+    .then((res) => {
+      if (res.length > 0 && res[0].name !== "") {
+        db("mails")
+          .insert({
+            mailid,
+            at: new Date(),
+            sub: subject,
+            body,
+          })
+          .then(async (res) => {
+            console.log(res);
+
+            await db("mail_details")
+              .insert({
+                mailid,
+                sender: user,
+                receiver: to,
+              })
+              .then((res) => {
+                console.log(res);
+                resp.json({ msg: "Mail sent!" });
+              })
+              .catch((err) => resp.json({ msg: err.msg }));
+          })
+          .catch((err) => resp.json({ msg: err.msg }));
+      }
+    });
+
+  resp.json({ msg: "something went wrong." });
 });
 
 // db("mails")

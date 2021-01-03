@@ -1,0 +1,36 @@
+.header {
+  grid-area: header;
+  background-color: black;
+  text-align: left;
+  padding-top: 10px;
+  padding-left: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 20px;
+  font-family: "Lato", sans-serif;
+
+  h1 {
+    font-size: 20px;
+    padding: 8px;
+    color: white;
+  }
+
+  .starting {
+    position: absolute;
+    top: 45%;
+    left: 43%;
+    font-size: 20px;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    .MuiSvgIcon-root {
+      color: white;
+      font-size: 30px;
+    }
+  }
+}

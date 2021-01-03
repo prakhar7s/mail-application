@@ -26,8 +26,6 @@ const MailCollections = ({ user, setInboxMails, setSentMails }) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
-
         if (res.isMails) {
           setInboxMails(res.inboxMails);
         }
@@ -46,7 +44,7 @@ const MailCollections = ({ user, setInboxMails, setSentMails }) => {
           setSentMails(res.sentMails);
         }
       });
-  }, [user.gigamail, setInboxMails]);
+  }, [user.gigamail, setInboxMails, setSentMails]);
 
   return (
     <div className="mail-collections">

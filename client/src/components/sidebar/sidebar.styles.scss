@@ -1,10 +1,11 @@
 .sidebar {
   border: 1px solid black;
-  width: 20%;
+  grid-area: sidebar;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to top, rgb(2, 11, 46), #0a0909);
+  background: linear-gradient(-20deg, rgb(0, 0, 0) 15%, #050441 15%);
   color: white;
+  position: relative;
 
   .application-name {
     flex: 0.2;
@@ -43,6 +44,24 @@
     h1 {
       color: white;
       font-size: 18px;
+    }
+  }
+
+  .create-mail-button {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background-color: rgb(4, 4, 82);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+
+    .MuiSvgIcon-root {
+      color: white;
+      font-size: 30px;
     }
   }
 }

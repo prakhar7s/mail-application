@@ -1,4 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+import "./signup-page.styles.scss";
 
 class SignUp extends React.Component {
   constructor() {
@@ -40,20 +43,26 @@ class SignUp extends React.Component {
           <input
             type="text"
             name="gigamail"
+            placeholder="prakhar@gigamail.com"
             onChange={(e) => this.handleChange(e)}
           />
           <input
             type="text"
             name="name"
+            placeholder="Prakhar Shrivastava"
             onChange={(e) => this.handleChange(e)}
           />
           <input
             type="text"
             name="password"
+            placeholder="prakhar@123"
             onChange={(e) => this.handleChange(e)}
           />
           <input type="submit" onClick={(e) => this.handleSubmit(e)} />
         </form>
+        <p>
+          Already have an account <Link to="/signin">SignIn</Link>
+        </p>
       </div>
     );
   }

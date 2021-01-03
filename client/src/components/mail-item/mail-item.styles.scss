@@ -3,10 +3,8 @@ $border-color: rgb(175, 174, 174);
 .mail-item {
   display: flex;
   flex-direction: column;
-  margin: 10px 0;
   padding: 10px;
   border-bottom: 1px solid $border-color;
-  border-top: 1px solid $border-color;
   color: rgb(0, 0, 0);
   text-decoration: none;
   transition: 200ms all linear;

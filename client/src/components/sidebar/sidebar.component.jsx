@@ -6,9 +6,19 @@ import { connect } from "react-redux";
 
 import { userSignOut } from "../../redux/reducers/user/user-actions";
 
+import AddIcon from "@material-ui/icons/Add";
+
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+
 import "./sidebar.styles.scss";
 
-const Sidebar = ({ user, userSignOut, inboxMailsCount, sentMailsCount }) => {
+const Sidebar = ({
+  user,
+  userSignOut,
+  inboxMailsCount,
+  sentMailsCount,
+  setHeader,
+}) => {
   return (
     <div className="sidebar">
       <div className="application-name">
@@ -16,19 +26,39 @@ const Sidebar = ({ user, userSignOut, inboxMailsCount, sentMailsCount }) => {
       </div>
       <div className="sidebar-options">
         <div className="option">
-          <Link to={`/user/${user.userid}/inbox`}>Inbox</Link>
+          <Link
+            to={`/user/${user.userid}/inbox`}
+            onClick={() => setHeader("INBOX")}
+          >
+            Inbox
+          </Link>
           <span className="no-of-mails">{inboxMailsCount}</span>
         </div>
         <div className="option">
-          <Link to={`/user/${user.userid}/sent`}>Sent</Link>
+          <Link
+            to={`/user/${user.userid}/sent`}
+            onClick={() => setHeader("SENT")}
+          >
+            Sent
+          </Link>
           <span className="no-of-mails">{sentMailsCount}</span>
         </div>
         <div className="option">
-          <Link to="/drafts">Drafts</Link>
+          <Link
+            to={`/user/${user.userid}/drafts`}
+            onClick={() => setHeader("DRAFTS")}
+          >
+            Drafts
+          </Link>
           <span className="no-of-mails">0</span>
         </div>
         <div className="option">
-          <Link to="trash">Trash</Link>
+          <Link
+            to={`/user/${user.userid}/trash`}
+            onClick={() => setHeader("TRASH")}
+          >
+            Trash
+          </Link>
           <span className="no-of-mails">0</span>
         </div>
       </div>
@@ -39,9 +69,17 @@ const Sidebar = ({ user, userSignOut, inboxMailsCount, sentMailsCount }) => {
             sessionStorage.removeItem("user");
             userSignOut();
           }}
+          className="logout-btn"
         >
-          Sign out
+          <ExitToAppIcon />
+          <span>Logout</span>
         </button>
+      </div>
+
+      <div className="create-mail-button">
+        <Link to={`/user/${user.userid}/create-mail`}>
+          <AddIcon />
+        </Link>
       </div>
     </div>
   );
