@@ -1,21 +1,21 @@
-$border-color: rgb(175, 174, 174);
+$border-color: rgb(240, 225, 225);
 
 .mail-item {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 14px 10px;
   border-bottom: 1px solid $border-color;
   color: rgb(0, 0, 0);
   text-decoration: none;
   transition: 200ms all linear;
 
   &:hover {
-    background-color: rgba(6, 6, 56, 0.281);
+    background-color: rgba(36, 36, 216, 0.151);
   }
 
   .mail-subject {
-    font-size: 10px;
-    margin-bottom: 10px;
+    margin: 8px 0;
+    text-transform: uppercase;
 
     .subject {
       overflow: hidden;
@@ -23,8 +23,8 @@ $border-color: rgb(175, 174, 174);
       white-space: nowrap;
       font-size: 20px;
       font-family: "Lato", sans-serif;
-      font-weight: 600;
-      font-size: 20px;
+      font-weight: 400;
+      font-size: 15px;
     }
   }
 
@@ -42,12 +42,13 @@ $border-color: rgb(175, 174, 174);
       text-overflow: ellipsis;
       overflow: hidden;
       margin-right: 10%;
+      font-size: 15px;
     }
 
     .mail-sent-time {
       overflow: hidden;
       white-space: nowrap;
-      font-size: 15px;
+      font-size: 14px;
       width: 30%;
     }
   }

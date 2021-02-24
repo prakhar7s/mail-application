@@ -1,19 +1,22 @@
 .header {
   grid-area: header;
-  background-color: black;
+  background-color: #07061d;
+  backdrop-filter: blur(20px);
   text-align: left;
-  padding-top: 10px;
-  padding-left: 20px;
+  padding: 0 20px;
+  align-items: center;
   width: 100%;
+  height: 50px;
   display: flex;
   justify-content: space-between;
-  padding: 3px 20px;
   font-family: "Lato", sans-serif;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
 
   h1 {
-    font-size: 20px;
+    font-size: 15px;
     padding: 8px;
     color: white;
+    font-weight: 400;
   }
 
   .starting {
@@ -30,7 +33,7 @@
 
     .MuiSvgIcon-root {
       color: white;
-      font-size: 30px;
+      font-size: 24px;
     }
   }
 }

@@ -7,7 +7,7 @@ const db = require("knex")({
   connection: {
     host: "localhost",
     user: "prakhar",
-    password: "1234",
+    password: "1111",
     database: "gigamail",
   },
 });

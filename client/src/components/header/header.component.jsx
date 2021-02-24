@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import SyncIcon from "@material-ui/icons/Sync";
 
 import "./header.styles.scss";
-import { Redirect } from "react-router-dom";
-import { Link } from "@material-ui/core";
 
-import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 
-const Header = ({ header, user }) => {
-  let h = useHistory();
-  useEffect(() => {
-    console.log(h);
-  }, []);
-
+const Header = ({ header }) => {
   return (
     <div className="header">
       <h1>{header}</h1>

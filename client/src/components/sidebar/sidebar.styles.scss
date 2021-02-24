@@ -1,33 +1,36 @@
 .sidebar {
-  border: 1px solid black;
   grid-area: sidebar;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(-20deg, rgb(0, 0, 0) 15%, #050441 15%);
+  background-color: rgba(68, 131, 247, 0.8);
   color: white;
   position: relative;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
 
   .application-name {
     flex: 0.2;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid rgba(235, 235, 235, 0.178);
+    font-weight: 600;
   }
 
   .sidebar-options {
     flex: 0.5;
-    border-bottom: 1px solid rgba(235, 235, 235, 0.178);
 
     .option {
       margin: 20px 10px;
       padding: 10px;
       display: flex;
       justify-content: space-between;
+      border-bottom: 1px solid rgba(204, 198, 198, 0.4);
 
       a {
         text-decoration: none;
         color: white;
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
       }
     }
   }
@@ -42,18 +45,19 @@
     margin-top: 30px;
 
     h1 {
-      color: white;
+      color: rgba(255, 255, 255, 0.9);
       font-size: 18px;
+      font-weight: 400;
     }
   }
 
   .create-mail-button {
     position: absolute;
-    bottom: 20px;
-    right: 0;
+    bottom: 10px;
     width: 60px;
+    right: 14px;
     height: 60px;
-    background-color: rgb(4, 4, 82);
+    background-color: rgb(245, 116, 116);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,5 +67,18 @@
       color: white;
       font-size: 30px;
     }
+  }
+
+  .logout-btn {
+    color: white;
+    outline: none;
+    background: #07061d;
+    border: 0;
+    display: flex;
+    width: 110px;
+    border-radius: 7px;
+    height: 38px;
+    justify-content: space-around;
+    align-items: center;
   }
 }
